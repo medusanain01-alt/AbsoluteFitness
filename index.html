@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f5f0" />
+    <title>Absolute Fitness | Admin Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <a class="brand" href="#" aria-label="Absolute Fitness home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 36 36" fill="none"><path d="M4 20h5l3-9 6 17 5-13 3 5h6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="brand-copy"><strong>ABSOLUTE</strong><small>FITNESS CLUB</small></span>
+        </a>
+
+        <div class="nav-label">WORKSPACE</div>
+        <nav class="navigation">
+          <button class="nav-item is-active" data-view="dashboard" type="button" aria-label="Overview">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="14" y="3" width="7" height="5" rx="2"/><rect x="14" y="11" width="7" height="10" rx="2"/><rect x="3" y="14" width="8" height="7" rx="2"/></svg>
+            <span>Overview</span>
+          </button>
+          <button class="nav-item" data-view="enrollees" type="button" aria-label="Enrollees">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M20 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>Enrollees</span>
+            <span class="nav-count" id="nav-count">0</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="sidebar-note">
+            <span class="note-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M3 12h18"/></svg></span>
+            <strong>Built for better</strong>
+            <span>Every rep. Every member.</span>
+          </div>
+          <div class="admin-profile">
+            <div class="avatar">AF</div>
+            <div class="profile-copy"><strong>Club admin</strong><span>Administrator</span></div>
+            <span class="profile-menu" aria-hidden="true">•••</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumbs"><span>Workspace</span><span class="crumb-slash">/</span><strong id="breadcrumb-current">Overview</strong></div>
+          <div class="topbar-right">
+            <div class="today-date"><span class="status-dot"></span><span id="today-label"></span></div>
+            <button class="top-avatar" type="button" aria-label="Administrator account">AF</button>
+          </div>
+        </header>
+
+        <section class="view is-visible" id="dashboard-view" aria-labelledby="dashboard-heading">
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow"><span class="eyebrow-line"></span> YOUR CLUB AT A GLANCE</div>
+              <h1 id="dashboard-heading">Good to see you<span class="heading-period">.</span></h1>
+              <p class="page-subtitle">Here’s what’s happening at Absolute Fitness today.</p>
+            </div>
+            <button class="button button-primary" data-open-form type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              New enrolment
+            </button>
+          </div>
+
+          <div class="stats-grid">
+            <article class="stat-card">
+              <div class="stat-top"><span class="stat-icon icon-lime"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg></span><span class="stat-kicker">MEMBERSHIP</span></div>
+              <div class="stat-value" id="active-count">0</div><div class="stat-caption">Active enrollees</div>
+              <div class="stat-foot"><span class="foot-dot green"></span><span>Currently on a plan</span></div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top"><span class="stat-icon icon-peach"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span class="stat-kicker">NEEDS ATTENTION</span></div>
+              <div class="stat-value" id="expiring-count">0</div><div class="stat-caption">Expiring in 3 days</div>
+              <div class="stat-foot"><span class="foot-dot peach"></span><span>Check in with your members</span></div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top"><span class="stat-icon icon-blue"><span class="currency-symbol" aria-hidden="true">₱</span></span><span class="stat-kicker">PLAN REVENUE</span></div>
+              <div class="stat-value" id="revenue-total">₱0</div><div class="stat-caption">Total enrolment value</div>
+              <div class="stat-foot"><span class="foot-dot blue"></span><span>From recorded enrolments</span></div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top"><span class="stat-icon icon-lavender"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg></span><span class="stat-kicker">THIS MONTH</span></div>
+              <div class="stat-value" id="month-count">0</div><div class="stat-caption">New enrolments</div>
+              <div class="stat-foot"><span class="foot-dot lavender"></span><span>Joined this month</span></div>
+            </article>
+          </div>
+
+          <div class="content-grid">
+            <section class="panel members-panel" aria-labelledby="recent-heading">
+              <div class="panel-header">
+                <div><div class="section-overline">MEMBER DIRECTORY</div><h2 id="recent-heading">Recent enrollees</h2></div>
+                <button class="text-button" data-show-enrollees type="button">View all <span aria-hidden="true">→</span></button>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th>ENROLLEE</th><th>PLAN</th><th>STARTED</th><th>STATUS</th></tr></thead>
+                  <tbody id="recent-table-body"></tbody>
+                </table>
+                <div class="empty-state" id="recent-empty">
+                  <div class="empty-illustration"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="20" cy="16" r="7"/><path d="M7 39c0-7 5.8-12 13-12s13 5 13 12M36 17v12M30 23h12"/></svg></div>
+                  <strong>Your member list starts here</strong>
+                  <span>Add your first enrollee to see your club activity.</span>
+                  <button class="text-button" data-open-form type="button">Add an enrollee <span aria-hidden="true">→</span></button>
+                </div>
+              </div>
+            </section>
+
+            <aside class="panel plans-panel" aria-labelledby="plans-heading">
+              <div class="panel-header"><div><div class="section-overline">SIMPLE &amp; FLEXIBLE</div><h2 id="plans-heading">Membership plans</h2></div><span class="plan-spark">✳</span></div>
+              <p class="plans-description">Choose the membership duration that works for your members.</p>
+              <div class="plan-card plan-15">
+                <div class="plan-card-top"><span class="plan-duration">15 DAYS</span></div>
+                <div class="plan-bottom"><span>Short-term access</span><span class="plan-tag">POPULAR</span></div>
+              </div>
+              <div class="plan-card plan-30">
+                <div class="plan-card-top"><span class="plan-duration">30 DAYS</span></div>
+                <div class="plan-bottom"><span>Full-month access</span><span class="plan-tag tag-value">BEST VALUE</span></div>
+              </div>
+              <div class="plan-footer"><span class="plan-footer-icon">✓</span> Plan price is calculated automatically during enrolment.</div>
+            </aside>
+          </div>
+          <section class="panel promos-panel" aria-labelledby="promos-heading">
+            <div class="panel-header"><div><div class="section-overline">EXTRA DAYS, SAME PLAN PRICE</div><h2 id="promos-heading">With Promos</h2></div><span class="plan-spark">✳</span></div>
+            <p class="plans-description">Choose a paid plan with complimentary days added to the membership.</p>
+            <div class="promo-list">
+              <div class="plan-card plan-promo">
+                <div class="plan-card-top"><span class="plan-duration">15 DAYS + 3 FREE DAYS</span></div>
+                <div class="plan-bottom"><span>18 total membership days</span><span class="plan-tag tag-promo">WITH PROMO</span></div>
+              </div>
+              <div class="plan-card plan-promo">
+                <div class="plan-card-top"><span class="plan-duration">15 DAYS + 7 FREE DAYS</span></div>
+                <div class="plan-bottom"><span>22 total membership days</span><span class="plan-tag tag-promo">WITH PROMO</span></div>
+              </div>
+              <div class="plan-card plan-promo">
+                <div class="plan-card-top"><span class="plan-duration">30 DAYS + 3 FREE DAYS</span></div>
+                <div class="plan-bottom"><span>33 total membership days</span><span class="plan-tag tag-promo">WITH PROMO</span></div>
+              </div>
+              <div class="plan-card plan-promo">
+                <div class="plan-card-top"><span class="plan-duration">30 DAYS + 7 FREE DAYS</span></div>
+                <div class="plan-bottom"><span>37 total membership days</span><span class="plan-tag tag-promo">WITH PROMO</span></div>
+              </div>
+            </div>
+          </section>
+          <footer class="page-footer"><span>© <span id="footer-year"></span> Absolute Fitness</span><span>Stronger together<span class="footer-heart"> ♥</span></span></footer>
+        </section>
+
+        <section class="view" id="enrollees-view" aria-labelledby="enrollees-heading">
+          <div class="page-heading enrollees-heading">
+            <div>
+              <div class="eyebrow"><span class="eyebrow-line"></span> YOUR PEOPLE, YOUR PROGRESS</div>
+              <h1 id="enrollees-heading">Enrollees<span class="heading-period">.</span></h1>
+              <p class="page-subtitle">Keep track of every member and the time left on their plan.</p>
+            </div>
+            <button class="button button-primary" data-open-form type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              New enrolment
+            </button>
+          </div>
+          <div class="enrollee-summary">
+            <div><span class="summary-number" id="directory-total">0</span><span>total enrollees</span></div>
+            <span class="summary-divider"></span>
+            <div><span class="summary-dot"></span><span><strong id="directory-active">0</strong> active</span></div>
+          </div>
+          <section class="panel directory-panel">
+            <div class="directory-toolbar">
+              <div><div class="section-overline">ALL MEMBERS</div><h2>Enrollee directory</h2></div>
+              <div class="table-controls">
+                <label class="search-box">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+                  <input id="search-input" type="search" placeholder="Search name or phone..." aria-label="Search enrollees" />
+                </label>
+                <label class="filter-select-wrap">
+                  <span class="sr-only">Filter by status</span>
+                  <select id="status-filter" aria-label="Filter by status"><option value="all">All members</option><option value="active">Active</option><option value="expiring">Expiring soon</option><option value="expired">Expired</option></select>
+                </label>
+              </div>
+            </div>
+            <div class="table-wrap directory-table-wrap">
+              <table class="directory-table">
+                <thead><tr><th>ENROLLEE</th><th>PHONE</th><th>PLAN</th><th>PRICE</th><th>START DATE</th><th>ENDS ON</th><th>DAYS LEFT</th><th>STATUS</th></tr></thead>
+                <tbody id="directory-table-body"></tbody>
+              </table>
+              <div class="empty-state directory-empty" id="directory-empty">
+                <div class="empty-illustration"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="20" cy="16" r="7"/><path d="M7 39c0-7 5.8-12 13-12s13 5 13 12M36 17v12M30 23h12"/></svg></div>
+                <strong id="directory-empty-title">No enrollees yet</strong>
+                <span id="directory-empty-copy">Add a member to start tracking their plan and days left.</span>
+                <button class="button button-primary empty-cta" data-open-form type="button">Add first enrollee</button>
+              </div>
+            </div>
+          </section>
+          <footer class="page-footer"><span>© <span class="footer-year"></span> Absolute Fitness</span><span>Stronger together<span class="footer-heart"> ♥</span></span></footer>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal-backdrop" id="enrolment-modal" aria-hidden="true">
+      <section class="modal" role="dialog" aria-modal="true" aria-labelledby="form-heading">
+        <div class="modal-header">
+          <div><div class="section-overline">GROW YOUR COMMUNITY</div><h2 id="form-heading">New enrolment</h2></div>
+          <button class="close-button" id="close-modal" type="button" aria-label="Close form">×</button>
+        </div>
+        <p class="modal-description">Add a member and get them started on their fitness journey.</p>
+        <form id="enrolment-form">
+          <label class="form-label" for="member-name">Full name <span>*</span></label>
+          <input class="form-input" id="member-name" name="name" type="text" placeholder="e.g. Alex Santos" maxlength="80" required autocomplete="name" />
+
+          <label class="form-label" for="member-phone">Phone number <span>*</span></label>
+          <input class="form-input" id="member-phone" name="phone" type="tel" placeholder="e.g. 0917 123 4567" maxlength="30" required autocomplete="tel" />
+
+          <label class="form-label" for="member-duration">Membership duration <span>*</span></label>
+          <select class="form-input form-select" id="member-duration" name="duration" required>
+            <option value="" disabled selected>Select a plan or promo</option>
+            <optgroup label="With Promos">
+              <option value="15+3">15 days + 3 free days</option>
+              <option value="15+7">15 days + 7 free days</option>
+              <option value="30+3">30 days + 3 free days</option>
+              <option value="30+7">30 days + 7 free days</option>
+            </optgroup>
+            <optgroup label="Membership plans">
+              <option value="15">15 days</option>
+              <option value="30">30 days</option>
+            </optgroup>
+          </select>
+          <div class="price-preview" id="price-preview"><span class="price-preview-icon">₱</span><span><small>ENROLMENT PRICE</small><strong id="price-value">Choose a plan</strong></span><span class="price-auto">AUTO-SET</span></div>
+          <div class="form-error" id="form-error" role="alert"></div>
+          <div class="modal-actions">
+            <button class="button button-secondary" id="cancel-modal" type="button">Cancel</button>
+            <button class="button button-primary submit-button" type="submit">Add enrollee <span aria-hidden="true">→</span></button>
+          </div>
+        </form>
+        <div class="modal-footnote"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 1 1 8 0v3"/></svg> Member details are saved on this device.</div>
+      </section>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
